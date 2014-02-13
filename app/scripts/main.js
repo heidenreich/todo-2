@@ -1,4 +1,4 @@
-console.log('\'Allo \'Allo!');
+console.log('lets do this again');
 
 var taskList = [
    {
@@ -34,7 +34,7 @@ $(document).ready(function(){
 		var description = $('.js-new-task').val();
 
 		var task = {
-			description: description,
+			description: description || 'boy, this is easy..',
 			done: false,
 			id: _.uniqueId('task #')
 		}
@@ -47,20 +47,66 @@ $(document).ready(function(){
 	// completed task code
 
 	$('.todo-tasks').on('click', '.js-completed-task', function(){
-		$(this).siblings('.task-text').toggleClass('completed')
+
+		$(this).siblings('.task-text').toggleClass('completed');
+
+		var parentId = $(this).parent('.new-task-item').attr('id');
+
+		var items = _.findWhere(taskList, {id: parentId});
+
+		// $(this).toggle(taskList.done);
+
+
+		items.done = true;
+
+		console.log(taskList)
+
 		
 	});
 
 	// remove a task
 
 	$('.todo-tasks').on('click', '.js-remove-task', function(){
-		$(this).parent('.new-task-item').remove();
+
+		var parentId = $(this).parent('.new-task-item').attr('id');
+
+		
+		taskList = _.reject(taskList,function(item){
+			return item.id == parentId;
+		});
+
+
+		$(this).parent().remove();
+
 	})
 
+	// edit a task
+
+	$('.todo-tasks').on('click', '.js-edit-task',function() {
+
+		var parentId = $(this).parent('.new-task-item').attr('id');
+
+		var items = _.findWhere(taskList, {id: parentId});
+
+		console.log(items)
+
+
+
+		var inputbox = "<input type='text'  class='inputbox' placeholder='type update here' value=\""+$(this).text()+"\">";
+
+		$(this).siblings('.task-text').html(inputbox);
+
+		$("input.inputbox").focus();
+
+		$("input.inputbox").blur(function(){
+			$(this).siblings().text($('.inputbox').val());
+		})	
+
+	})
 
 })
 
 
 
-//When div.edit me is clicked, run this function $(document).ready(function() { //When div.edit me is clicked, run this function $("div.editme").click(function() { //This if statement checks to see if there are //and children of div.editme are input boxes. If so, //we don't want to do anything and allow the user //to continue typing if ($(this).children('input').length == 0) { //Create the HTML to insert into the div. Escape any " characters var inputbox = "<input type='text' class='inputbox' value=\""+$(this).text()+"\">"; //Insert the HTML into the div $(this).html(inputbox); //Immediately give the input box focus. The user //will be expecting to immediately type in the input box, //and we need to give them that ability $("input.inputbox").focus(); //Once the input box loses focus, we need to replace the //input box with the current text inside of it. $("input.inputbox").blur(function() { var value = $(this).val(); $(".editme").text(value); }); } }); }); - See more at: http://www.unleashed-technologies.com/blog/2010/01/13/jquery-javascript-easy-edit-place-input-boxes-and-select-boxes#sthash.75VMj8PJ.dpuf
+
 
