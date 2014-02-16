@@ -2,9 +2,25 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
+
+body {
+   padding-top: 0px;
+   padding-bottom: 20px;
+   background: url(http://www.psdgraphics.com/file/light-wooden-background.jpg)
+}
+
+.jumbotron {
+   background: rgba(230, 197, 146, 0.55);
+}
+
 .new-task-item{
-   border: 1px solid black;
+   border-bottom: 1px solid rgb(247, 247, 247);
    background: white;
+}
+
+.todo-tasks {
+   border-bottom-left-radius: 6px;
+   border-bottom-right-radius: 6px;
 }
 
 .task-text {
