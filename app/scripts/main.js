@@ -87,13 +87,10 @@ $(document).ready(function(){
 
 	$('.todo-tasks').on('click', '.js-edit-task',function() {
 
-		// var parentId = $(this).parent('.new-task-item').attr('id');
+		var parentId = $(this).parent('.new-task-item').attr('id');
 
-		// var items = _.findWhere(taskList, {id: parentId});
+		var items = _.findWhere(taskList, {id: parentId});
 
-
-
-		// console.log(items)
 
 
 		var inputbox = "<input type='text'  class='inputbox' placeholder='type update here' value=\""+$(this).text()+"\">";
@@ -105,11 +102,15 @@ $(document).ready(function(){
 		$("input.inputbox").blur(function(){
 			$(this).siblings().text($('.inputbox').val());
 
+			console.log(items)
+
 		})	
 
 	})
 
 })
+
+
 
 
 

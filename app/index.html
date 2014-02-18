@@ -48,18 +48,19 @@
 
             <script type="text/template" class="addTaskTemplate">
                 <div class="new-task-item <%= id %>" id="<%= id %>">
-                    <button type="button" class="btn btn-default btn-lg js-edit-task">
+                    <button type="button" class="btn btn-default btn-lg js-edit-task clear-border">
                         <span class="glyphicon glyphicon-pencil edit-task"></span>
                     </button>
                     <span class= "id"><%= id %></span>
                     <div class="task-text"><%= description %></div>
-                    <button type="button" class="btn btn-default btn-lg js-completed-task">
+                    <button type="button" class="btn btn-default btn-lg js-completed-task clear-border">
                         <span class="glyphicon glyphicon-ok"></span>
                     </button>
-                    <button type="button" class="btn btn-default btn-lg js-remove-task">
+                    <button type="button" class="btn btn-default btn-lg js-remove-task clear-border">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </div>
+                <input class="edit" type="text" value="<%- description %>" />
             </script>
             
 
@@ -74,8 +75,9 @@
         <!-- bower:js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
         <!-- endbower -->
-        <!-- endbuild -->x
+        <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -103,7 +105,8 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
+        <script src="scripts/improved.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>

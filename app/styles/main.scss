@@ -9,6 +9,10 @@ body {
    background: url(http://www.psdgraphics.com/file/light-wooden-background.jpg)
 }
 
+h1 small {
+   color: white;
+}
+
 .jumbotron {
    background: rgba(230, 197, 146, 0.55);
 }
@@ -18,16 +22,22 @@ body {
    background: white;
 }
 
-.todo-tasks {
-   border-bottom-left-radius: 6px;
-   border-bottom-right-radius: 6px;
+.clear-border{
+   border: none;
 }
+
 
 .task-text {
    display: inline-block;
-
-   &.completed{
-      text-decoration: line-through;
-   }
+   width: 62%;
+   
 }
 
+.completed .task-text {
+      text-decoration: line-through;
+}
+
+// .edit .new-task-item {
+//    display: none;
+
+// }
